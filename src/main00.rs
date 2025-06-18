@@ -1,4 +1,9 @@
-// checking for duplicates by comparing lenghts
+// checking for duplicates when input is really large or streamed
+// using bloom filter data structure 
+// bloom filter is a space efficient data structure 
+// for representing a set 
+// because hashser there collions, so we need to set a tolerance for 
+// false positive rate
 
 use bloom::{ASMS, BloomFilter};
 
@@ -20,7 +25,7 @@ fn main() {
 
     match numbers {
         Ok(nums) => {
-            let result = contains_duplicate(nums);
+            let result = contains_duplicate_large(&nums);
             println!("Results: {}", result);
         }
         Err(e) => {
@@ -32,10 +37,10 @@ fn main() {
 fn contains_duplicate_large(nums: &[i32]) ->  bool {
     // expected num of items..
     let expected_num_items = 1_000_000;
-    let false_positive_rate = 0.01;
+    let tolerance = 0.01;
 
     // Create a HashSet to store unique numbers
-    let mut filter = BloomFilter::with_rate(false_positive_rate, expected_num_items);
+    let mut filter = BloomFilter::with_rate(tolerance, expected_num_items);
    
     // Add to filter or return true 
     // if the filter contains integer
