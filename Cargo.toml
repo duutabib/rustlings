@@ -18,3 +18,8 @@ opt-level = 0
 lto = true  
 # [1, 256] Max optimization, fast compilation but slow runtime 
 codegen-units = 1 
+
+# [bin] section is used to define multiple binary targets
+[bin]
+name = "duplicate"
+path = "src/main.rs" # set away from default path
