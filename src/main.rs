@@ -31,9 +31,12 @@ fn main() {
 }
 
 fn contains_duplicate(nums: Vec<i32>) ->  bool {
-
+    // Create a HashSet to store unique numbers
     let unique: HashSet<_> = nums.iter().collect();
-    
+   
+    // If the length of the HashSet is less than the 
+    // length of the input vector, 
+    // there are duplicates
     if nums.len() > unique.len() {
         return true
     }
