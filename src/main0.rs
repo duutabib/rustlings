@@ -1,3 +1,4 @@
+// Checking for duplicates by tracking unique elements in set.
 use std::collections::HashSet;
 use std::env;
 
