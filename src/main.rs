@@ -31,6 +31,10 @@ fn main() {
 }
 
 fn contains_duplicate(nums: Vec<i32>) ->  bool {
+    if nums.is_empty() {
+        return false;
+    }
+    
     // Create a HashSet to store unique numbers
     let unique: HashSet<_> = nums.iter().collect();
    
