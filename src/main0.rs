@@ -20,7 +20,7 @@ fn main() {
 
     match numbers {
         Ok(nums) => {
-            let result = contains_duplicate(nums);
+            let result = has_duplicates(nums);
             println!("Results: {}", result);
         }
         Err(e) => {
@@ -29,16 +29,19 @@ fn main() {
     }
 }
 
-fn contains_duplicate(nums: Vec<i32>) -> bool {
-
-        // Create a HashSet to store unique numbers
-        let mut seen = HashSet::new();
-        for num in nums {
-            // Check if the number is already in the set
-            if seen.contains(&num) {
-                return true;
-            }
-            seen.insert(num);
-        }
-        false
+fn has_duplicates(nums: Vec<i32>) -> bool {
+    if nums.is_empty() {
+        return false;
     }
+
+    // Create a HashSet to store unique numbers
+    let mut seen = HashSet::new();
+    for num in nums {
+        // Check if the number is already in the set
+        if seen.contains(&num) {
+            return true;
+        }
+        seen.insert(num);
+    }
+    false
+}
