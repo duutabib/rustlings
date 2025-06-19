@@ -6,7 +6,7 @@ description = "A Simple program to check for duplicate numbers"
 license = "MIT"
 
 [dependencies]
-# Add dependencies here
+bloom = "0.2.0"
 
 [build]
 target = "x86_64-apple-darwin"
