@@ -30,7 +30,7 @@ fn main() {
 
     match numbers {
         Ok(nums) => {
-            let result = contains_duplicate_large(nums);
+            let result = has_duplicates_large(nums);
             println!("Results: {}", result);
         }
         Err(e) => {
@@ -56,7 +56,7 @@ fn salted_hash<T: Hash>(item: &T, salt: &str) -> u64 {
 }
 
 /// Creates a new Bloom filter with optimal params
-fn creat_bloom_filter() -> impl ASMS {
+fn create_bloom_filter() -> impl ASMS {
     BloomFilter::with_rate(
         EXPECTED_ITEMS * BITS_PER_ITEM,
         vec![
@@ -69,12 +69,12 @@ fn creat_bloom_filter() -> impl ASMS {
 
 
 // checks for duplicates in seq of nums
-pub fn contains_duplicate_large(nums: &[i32]) ->  bool {
+pub fn has_duplicates_large(nums: &[i32]) ->  bool {
     if nums.is_empty() {
         return false;
     }
 
-    let mut filter = creat_bloom_filter();
+    let mut filter = create_bloom_filter();
     
     // Add to filter or return true 
     // if the filter contains integer
@@ -89,7 +89,6 @@ pub fn contains_duplicate_large(nums: &[i32]) ->  bool {
 }
     
     
-    
 
 #[cfg(test)]
 mod tests {
@@ -98,24 +97,24 @@ mod tests {
     #[test]
     fn test_contains_duplicate_large_no_duplicates() {
         let nums = vec![1, 2, 3, 4, 5];
-        assert_eq!(contains_duplicate_large(&nums), false);
+        assert_eq!(has_duplicates_large(&nums), false);
     }
 
     #[test]
     fn test_contains_duplicate_large_with_duplicates() {
         let nums = vec![1, 2, 3, 4, 5, 1];
-        assert_eq!(contains_duplicate_large(&nums), true);
+        assert_eq!(has_duplicates_large(&nums), true);
     }
     
     #[test]
     fn test_contains_duplicate_large_empty() {
         let nums = vec![];
-        assert_eq!(contains_duplicate_large(&nums), false);
+        assert_eq!(has_duplicates_large(&nums), false);
     }
 
     #[test]
     fn test_contains_duplicate_large_single() {
         let nums = vec![1];
-        assert_eq!(contains_duplicate_large(&nums), false);
+        assert_eq!(has_duplicates_large(&nums), false);
     }
 }
