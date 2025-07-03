@@ -1,0 +1,25 @@
+[package]
+name = "anagram"
+version = "0.1.0"
+authors = ["Abib Duut <abibduut@gmail.com>"]
+description = "A Simple program to check for anagram"
+license = "MIT"
+edition = "2021"
+
+[dependencies]
+
+[build]
+target = "x86_64-apple-darwin"
+
+[profile.release]
+# [0, 3] balance between compile time and runtime perf
+opt-level = 3
+# link time optimization (LTO)
+lto = true
+# [1, 256] Max optimization, fast compilation but slow runtime 
+codegen-units = 1
+
+# [bin] section is used to define multiple binary targets
+[[bin]]
+name = "anagram"
+path = "src/main.rs"
