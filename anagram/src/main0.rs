@@ -1,6 +1,7 @@
 // checking for duplicates by comparing lenghts
 use std::env;
-use bloom::BloomFilter;
+use std::io::{Read, Result};
+use std::collections::HashMap;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
